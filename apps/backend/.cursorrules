@@ -1,0 +1,95 @@
+### 1. File Structure
+- Each API module should have the following files:
+  - `index.ts` - Main router configuration
+  - `routes.ts` - Route definitions and OpenAPI specs
+  - `handlers.ts` - Request handlers
+  - `service.ts` - Business logic
+  - `models.ts` - Type definitions and schemas
+
+### 2. Type Safety and Validation
+- Use Zod for request/response validation
+- Define all schemas in `models.ts`
+- Every route should have clearly defined request and response types
+- Use TypeScript for type safety throughout
+
+### 3. Route Definition Rules
+- Each route should be created using `createRoute` from `@hono/zod-openapi`
+- Routes must specify:
+  - HTTP method
+  - Path
+  - Request validation (headers, query, body)
+  - Response schemas
+  - Tags for API grouping
+- Example structure from routes.ts:
+```typescript
+startLine: 17
+endLine: 31
+```
+
+### 4. Error Handling
+- Use standardized error responses
+- Include error causes for better error tracking
+- Always return errors in format: `{ cause: string }`
+- Catch all async operations
+- Example error handling pattern:
+```typescript
+try {
+  // operation
+} catch (error: any) {
+  return c.json({ cause: error.cause }, 400);
+}
+```
+
+### 5. Service Layer Rules
+- Keep business logic separate from handlers
+- Use static methods for service functions
+- Handle database operations in service layer
+- Throw errors with specific causes
+- Example service pattern:
+```typescript
+startLine: 17
+endLine: 42
+```
+
+### 6. Authentication
+- Use `x-api-key` header for authentication
+- Validate token in handlers before processing requests
+- Include authentication checks in route definitions
+- Example auth check:
+```typescript
+startLine: 36
+endLine: 46
+```
+
+### 7. Response Format
+- Use consistent response formats
+- For list endpoints:
+  ```typescript
+  {
+    data: T[],
+    pagination: {
+      page: number,
+      limit: number,
+      total: number
+    }
+  }
+  ```
+- For single item endpoints: Return the item directly
+
+### 8. Database Operations
+- Use Prisma for database operations
+- Handle database errors explicitly
+- Include proper error messages for database operations
+- Use transactions where necessary
+
+### 9. API Documentation
+- Include OpenAPI specifications for all routes
+- Add meaningful summaries and descriptions
+- Document all possible response codes
+- Group related endpoints using tags
+
+### 10. Code Organization
+- Export all routes through a single router instance
+- Keep related functionality grouped together
+- Use consistent naming conventions
+- Follow the principle of separation of concerns

@@ -1,0 +1,37 @@
+{
+  "name": "@repo/backend",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/hc.js",
+        "types": "./dist/hc.d.ts"
+      }
+    }
+  },
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "build:watch": "tsc -p tsconfig.build.json --watch",
+    "prisma:generate": "bunx prisma generate",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/swagger-ui": "^0.4.1",
+    "@hono/zod-openapi": "^0.16.4",
+    "@prisma/client": "5.21.1",
+    "@scalar/hono-api-reference": "^0.5.156",
+    "@types/multer": "^1.4.12",
+    "cloudinary": "^2.5.1",
+    "hono": "^4.6.4",
+    "mongodb": "^6.11.0",
+    "multer": "^1.4.5-lts.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@types/bun": "latest"
+  }
+}

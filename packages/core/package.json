@@ -1,0 +1,17 @@
+{
+  "name": "@repo/core",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./types/*": "./types/*.ts"
+  },
+  "dependencies": {
+    "@repo/backend": "workspace:*",
+    "@types/luxon": "^3.4.2",
+    "cloudinary": "^2.5.1",
+    "luxon": "^3.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}

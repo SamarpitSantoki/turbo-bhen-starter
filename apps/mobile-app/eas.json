@@ -1,0 +1,9 @@
+{
+  "build": {
+    "preview": {
+      "channel": "preview",
+      "distribution": "internal",
+      "env": {}
+    }
+  }
+}
