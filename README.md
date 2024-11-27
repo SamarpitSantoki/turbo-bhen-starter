@@ -1,81 +1,96 @@
-# Turborepo starter
+# BHEN StarterKit
 
-This is an official starter Turborepo.
+This is a monorepo built with Turborepo that provides a robust foundation for full-stack applications.
 
-## Using this example
+## Project Structure
 
-Run the following command:
+This monorepo includes the following packages and apps:
 
-```sh
-npx create-turbo@latest
-```
+### Apps
 
-## What's inside?
+- `web`: A Next.js web application
+- `mobile-app`: A cross-platform mobile application
+- `backend`: A backend server application
 
-This Turborepo includes the following packages/apps:
+### Packages
 
-### Apps and Packages
+- `@repo/ui`: A shared React component library used across web and mobile applications
+- `@repo/core`: Core business logic and shared utilities
+- `@repo/typescript-config`: Shared TypeScript configurations
+- `@repo/eslint-config`: Shared ESLint configurations
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+## Tech Stack
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [Turborepo](https://turbo.build/repo) for monorepo management
+- [TypeScript](https://www.typescriptlang.org/) for type safety
+- [Bun](https://bun.sh/) as the package manager
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
 
+## Getting Started
+
+### Prerequisites
+
+- Node.js >= 18
+- Bun >= 1.1.27
+
+### Installation
+
+```sh
+# Clone the repository
+git clone [repository-url]
+
+# Install dependencies
+bun install
+```
+
+### Development
+
+To develop all apps and packages:
+
+```sh
+bun run dev
+```
+
 ### Build
 
-To build all apps and packages, run the following command:
+To build all apps and packages:
 
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
+```sh
+bun run build
 ```
 
-### Remote Caching
+### UI Development
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+To work on the UI components:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+```sh
+bun run ui
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## Project Scripts
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+- `bun run dev`: Start development mode
+- `bun run build`: Build all applications
+- `bun run lint`: Lint all code
+- `bun run ui`: Start UI development environment
 
-```
-npx turbo link
-```
+## Remote Caching
+
+This project supports Turborepo's Remote Caching feature. To enable it:
+
+1. Create a [Vercel account](https://vercel.com/signup)
+2. Login to Turborepo CLI:
+   ```sh
+   npx turbo login
+   ```
+3. Link your project to Remote Cache:
+   ```sh
+   npx turbo link
+   ```
 
 ## Useful Links
 
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+- [Turborepo Documentation](https://turbo.build/repo/docs)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [Bun Documentation](https://bun.sh/docs)
