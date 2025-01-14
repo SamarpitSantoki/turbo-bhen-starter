@@ -99,7 +99,7 @@ export default class AuthService {
         first_name,
         last_name,
         phone_number,
-        role: "GARAGE_OWNER",
+        role: "USER",
         email: sanitizedEmail,
         password: hashedPassword,
       },

@@ -1,6 +1,6 @@
 import { createRoute, RouteConfig, z } from "@hono/zod-openapi";
 import jsonContent from "../../helpers/json-content";
-import userModels, { UserSchema } from "../user/models";
+import { UserSchema } from "../user/models";
 
 type RouteModel = Pick<RouteConfig, "request"> & Pick<RouteConfig, "responses">;
 

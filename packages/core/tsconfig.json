@@ -1,14 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "tailwind.config": ["./tailwind.config.js"]
-    },
-    "jsx": "react-native"
+    "strict": true
   },
-  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+  "include": ["**/*.ts"]
 }

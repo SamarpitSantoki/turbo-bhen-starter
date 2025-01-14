@@ -24,6 +24,7 @@
   ],
   "trustedDependencies": [
     "@gluestack-ui/nativewind-utils",
+    "@prisma/client",
     "core-js",
     "core-js-pure"
   ]

@@ -1,4 +1,4 @@
-import { AuthFormFields } from "@repo/core/types/forms/auth-form";
+import { AuthFormFields } from "@repo/core/types/forms/auth/auth-form";
 import hc from "../helpers/api";
 
 export const AuthService = {
@@ -29,7 +29,6 @@ export const AuthService = {
           phone_number: values.phone_number!,
         },
       });
-
       if (!data.ok) {
         const error = await data.json();
         throw new Error(error.message);
