@@ -1,6 +1,4 @@
-import { swaggerUI } from "@hono/swagger-ui";
 import { OpenAPIHono } from "@hono/zod-openapi";
-import auth from "./apis/auth";
 import configureOpenAPI from "./lib/openapi";
 const app = new OpenAPIHono();
 
@@ -19,7 +17,7 @@ app.use(async (c, next) => {
   }
 });
 
-const routes = app.route("/auth", auth);
+const routes = app;
 
 configureOpenAPI(app);
 
