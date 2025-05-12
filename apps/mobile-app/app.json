@@ -38,18 +38,8 @@
             "../../node_modules/@expo-google-fonts/lato/Lato_400Regular.ttf"
           ]
         }
-      ]
-      // NOTE: Uncomment this to enable splash screen
-      // [
-      //   "expo-splash-screen",
-      //   {
-      //     "image": "./src/assets/images/splash.png",
-      //     "dark": {
-      //       "image": "./src/assets/images/splash.png",
-      //       "backgroundColor": "#ffffff"
-      //     }
-      //   }
-      // ]
+      ],
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
