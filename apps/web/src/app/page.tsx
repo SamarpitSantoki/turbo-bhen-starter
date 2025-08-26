@@ -1,103 +1,81 @@
-import Image from 'next/image';
+'use client';
+
+import Link from 'next/link';
+import { UserProfile } from '@/components/auth/user-profile';
+import { useAuth } from '@/contexts/auth-context';
 
 export default function Home() {
-  return (
-    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-sans sm:p-20">
-      <main className="row-start-2 flex flex-col items-center gap-[32px] sm:items-start">
-        <Image
-          alt="Next.js logo"
-          className="dark:invert"
-          height={38}
-          priority
-          src="/next.svg"
-          width={180}
-        />
-        <ol className="list-inside list-decimal text-center font-mono text-sm/6 sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{' '}
-            <code className="rounded bg-black/[.05] px-1 py-0.5 font-mono font-semibold dark:bg-white/[.06]">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const { user, isLoading } = useAuth();
 
-        <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <a
-            className="flex h-10 items-center justify-center gap-2 rounded-full border border-transparent border-solid bg-foreground px-4 font-medium text-background text-sm transition-colors hover:bg-[#383838] sm:h-12 sm:w-auto sm:px-5 sm:text-base dark:hover:bg-[#ccc]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Image
-              alt="Vercel logomark"
-              className="dark:invert"
-              height={20}
-              src="/vercel.svg"
-              width={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="flex h-10 w-full items-center justify-center rounded-full border border-black/[.08] border-solid px-4 font-medium text-sm transition-colors hover:border-transparent hover:bg-[#f2f2f2] sm:h-12 sm:w-auto sm:px-5 sm:text-base md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Read our docs
-          </a>
+  if (isLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="h-12 w-12 animate-spin rounded-full border-indigo-600 border-b-2" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white shadow">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between py-6">
+            <div className="flex items-center">
+              <h1 className="font-bold text-2xl text-gray-900">BHEN</h1>
+            </div>
+            <div className="flex items-center space-x-4">
+              {user ? (
+                <UserProfile />
+              ) : (
+                <Link
+                  className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-medium text-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  href="/auth"
+                >
+                  Sign In
+                </Link>
+              )}
+            </div>
+          </div>
         </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        {user ? (
+          <div className="px-4 py-6 sm:px-0">
+            <div className="flex h-96 items-center justify-center rounded-lg border-4 border-gray-200 border-dashed">
+              <div className="text-center">
+                <h2 className="mb-4 font-bold text-2xl text-gray-900">
+                  Welcome to BHEN Stack, {user.name || user.email}!
+                </h2>
+                <p className="text-gray-600">
+                  Your crypto trading dashboard is coming soon.
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="px-4 py-6 sm:px-0">
+            <div className="flex h-96 items-center justify-center rounded-lg border-4 border-gray-200 border-dashed">
+              <div className="text-center">
+                <h2 className="mb-4 font-bold text-2xl text-gray-900">
+                  Welcome to BHEN Stack
+                </h2>
+                <p className="mb-8 text-gray-600">
+                  A monorepo with Hono, Next.js and BetterAuth
+                </p>
+                <Link
+                  className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 font-medium text-base text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  href="/auth"
+                >
+                  Get Started
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
-      <footer className="row-start-3 flex flex-wrap items-center justify-center gap-[24px]">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <Image
-            alt="File icon"
-            aria-hidden
-            height={16}
-            src="/file.svg"
-            width={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <Image
-            alt="Window icon"
-            aria-hidden
-            height={16}
-            src="/window.svg"
-            width={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <Image
-            alt="Globe icon"
-            aria-hidden
-            height={16}
-            src="/globe.svg"
-            width={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
