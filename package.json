@@ -5,10 +5,11 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "format": "turbo format"
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
+    "ultracite": "latest",
     "turbo": "^2.1.3",
     "typescript": "^5.4.5"
   },

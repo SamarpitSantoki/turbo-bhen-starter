@@ -1,14 +1,14 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const errorContent = {
   content: {
-    "application/json": {
+    'application/json': {
       schema: z.object({
         message: z.string(),
       }),
     },
   },
-  description: "Error Response",
+  description: 'Error Response',
 };
 
 export default errorContent;

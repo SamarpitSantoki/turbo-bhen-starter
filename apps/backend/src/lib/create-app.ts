@@ -1,5 +1,5 @@
-import { OpenAPIHono } from "@hono/zod-openapi";
-import { AppBindings, AppOpenAPI } from "./types";
+import { OpenAPIHono } from '@hono/zod-openapi';
+import type { AppBindings, AppOpenAPI } from './types';
 
 export function createRouter() {
   return new OpenAPIHono<AppBindings>({
@@ -14,5 +14,5 @@ export default function createApp() {
 }
 
 export function createTestApp<R extends AppOpenAPI>(router: R) {
-  return createApp().route("/", router);
+  return createApp().route('/', router);
 }

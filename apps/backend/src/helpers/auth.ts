@@ -1,5 +1,5 @@
-import { sign, verify } from "hono/jwt";
-import { JWTPayload } from "hono/utils/jwt/types";
+import { sign, verify } from 'hono/jwt';
+import type { JWTPayload } from 'hono/utils/jwt/types';
 
 interface TokenPayload extends JWTPayload {
   id: string;
@@ -12,7 +12,7 @@ interface TokenPayload extends JWTPayload {
 */
 const signToken = (payload: TokenPayload): Promise<string> => {
   const secret = process.env.JWT_SECRET;
-  if (!secret) throw new Error("JWT_SECRET is not defined");
+  if (!secret) throw new Error('JWT_SECRET is not defined');
   return sign(
     { ...payload, exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 },
     secret
@@ -21,7 +21,7 @@ const signToken = (payload: TokenPayload): Promise<string> => {
 
 const verifyToken = (token: string): Promise<TokenPayload> => {
   const secret = process.env.JWT_SECRET;
-  if (!secret) throw new Error("JWT_SECRET is not defined");
+  if (!secret) throw new Error('JWT_SECRET is not defined');
   return verify(token, secret) as Promise<TokenPayload>;
 };
 
@@ -34,7 +34,7 @@ const compare = async (
 
 const hash = async (password: string): Promise<string> => {
   return Bun.password.hash(password, {
-    algorithm: "bcrypt",
+    algorithm: 'bcrypt',
   });
 };
 

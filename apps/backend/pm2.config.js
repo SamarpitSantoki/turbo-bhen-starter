@@ -1,8 +1,8 @@
 module.exports = {
-  name: "abz-backend", // Name of your application
-  script: "src/index.ts", // Entry point of your application
-  interpreter: "bun", // Bun interpreter
+  name: 'abz-backend', // Name of your application
+  script: 'src/index.ts', // Entry point of your application
+  interpreter: 'bun', // Bun interpreter
   env: {
     PATH: `${process.env.HOME}/.bun/bin:${process.env.PATH}`, // Add "~/.bun/bin/bun" to PATH
-  }
-}
+  },
+};

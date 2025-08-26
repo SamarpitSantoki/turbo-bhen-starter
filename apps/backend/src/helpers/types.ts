@@ -1,4 +1,4 @@
-import type { z } from "@hono/zod-openapi";
+import type { z } from '@hono/zod-openapi';
 
 // eslint-disable-next-line ts/ban-ts-comment
 export type ZodSchema =

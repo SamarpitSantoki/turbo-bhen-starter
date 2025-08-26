@@ -1,5 +1,6 @@
-import { OpenAPIHono } from "@hono/zod-openapi";
-import configureOpenAPI from "./lib/openapi";
+import { OpenAPIHono } from '@hono/zod-openapi';
+import configureOpenAPI from './lib/openapi';
+
 const app = new OpenAPIHono();
 
 app.use(async (c, next) => {
@@ -22,7 +23,7 @@ const routes = app;
 configureOpenAPI(app);
 
 console.log(
-  "Hono is running on port http://localhost:" + Bun.env.PORT + "/docs"
+  'Hono is running on port http://localhost:' + Bun.env.PORT + '/docs'
 );
 
 export default {

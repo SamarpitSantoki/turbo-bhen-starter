@@ -1,14 +1,14 @@
 import {
-  S3Client,
+  GetObjectCommand,
   ListBucketsCommand,
   ListObjectsV2Command,
-  GetObjectCommand,
   PutObjectCommand,
-} from "@aws-sdk/client-s3";
+  S3Client,
+} from '@aws-sdk/client-s3';
 
 export async function uploadToR2(file: File, key: string) {
   const client = new S3Client({
-    region: "auto",
+    region: 'auto',
     endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
     credentials: {
       accessKeyId: process.env.R2_ACCESS_KEY_ID!,
@@ -16,7 +16,7 @@ export async function uploadToR2(file: File, key: string) {
     },
     // Add reasonable timeouts
     requestHandler: {
-      abortSignal: AbortSignal.timeout(15000), // 15 second timeout
+      abortSignal: AbortSignal.timeout(15_000), // 15 second timeout
     },
   });
 
@@ -45,7 +45,7 @@ export async function uploadToR2(file: File, key: string) {
 
     return result;
   } catch (error) {
-    console.error("Error uploading to R2:", error);
+    console.error('Error uploading to R2:', error);
     throw error;
   }
 }

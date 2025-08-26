@@ -8,7 +8,8 @@
     "build:preview": "NODE_ENV=preview eas build -p android --profile preview --local",
     "update:preview": "NODE_ENV=preview eas update --branch preview --clear-cache",
     "ios": "DARK_MODE=media expo run:ios",
-    "lint": "expo lint",
+    "lint": "npx ultracite@latest lint",
+    "format": "npx ultracite@latest format",
     "web": "DARK_MODE=media undefined",
     "ui": "bunx gluestack-ui"
   },
@@ -84,6 +85,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",
+    "ultracite": "latest",
     "@types/jest": "^29.5.14",
     "@types/react": "~19.0.14",
     "@types/react-test-renderer": "^18.3.1",
