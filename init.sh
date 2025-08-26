@@ -1,4 +1,4 @@
-SESH="samarpit-workflow"
+SESH="workflow"
 
 tmux has-session -t $SESH 2>/dev/null
 
@@ -17,7 +17,8 @@ if [ $? != 0 ]; then
  BG_COLOR="black"
  ACTIVE_COLOR="red"
 
- tmux set-option -t samarpit-workflow status-style fg=white,bg=$BG_COLOR
+ tmux set-option -t $SESH status-style fg=white,bg=$BG_COLOR
+ tmux set-option -t $SESH mouse on
 
 fi
 
